@@ -68,13 +68,13 @@ export default {
                 this.$router.replace("/")
               }, 1000);
             })
-            .catch(res => {
-              this.$message({
-                message: '登录失败，请检查用户名和密码',
-                type: 'warning'
-              });
-              this.$refs.form.resetFields()
-            })
+          // .catch(res => {
+          //   this.$message({
+          //     message: '登录失败，请检查用户名和密码',
+          //     type: 'warning'
+          //   });
+          //   this.$refs.form.resetFields()
+          // })
         }
       })
     }
