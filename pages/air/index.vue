@@ -55,7 +55,7 @@
                     type="flex"
                     justify="space-between">
               <span>{{item.departCity}}-{{item.destCity}}</span>
-              <span>￥699</span>
+              <span>{{Number(item.price).toFixed(2)}}</span>
             </el-row>
           </nuxt-link>
         </el-col>
@@ -79,6 +79,7 @@ export default {
     this.$axios({
       url: `/airs/sale`
     }).then(res => {
+      console.log(res)
       this.sales = res.data.data;
     });
   },

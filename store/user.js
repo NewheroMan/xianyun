@@ -33,5 +33,19 @@ export const actions = {
       commit("setUserInfo", data);
       return data;
     })
+  },
+  sendCode(store, phoneNumber) {
+    return this.$axios({
+      url: "/captchas",
+      method: "POST",
+      data: {
+        tel: phoneNumber
+      }
+    }).then(res => {
+      const {
+        code
+      } = res.data;
+      return code;
+    })
   }
 }

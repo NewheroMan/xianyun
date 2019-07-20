@@ -6,7 +6,8 @@ import {
 // axios拦截器
 // 第一个参数是nuxt对象
 export default ({
-  $axios
+  $axios,
+  redirect
 }) => {
 
   // 拦截axios的错误请求
@@ -19,6 +20,9 @@ export default ({
     if (statusCode === 400) {
       // 错误提示
       Message.error(message);
+    }
+    if (statusCode === 401 || statusCode === 403) {
+      redirect("/user/login")
     }
   });
 }

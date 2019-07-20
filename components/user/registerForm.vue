@@ -93,25 +93,31 @@ export default {
   },
   methods: {
     handleSendCaptcha () {
-      const phoneNumber = this.form.username;
-      if (!phoneNumber.trim()) {
-        this.$message.warning("请输入用户名和手机号码");
-        return;
-      }
-      this.$axios({
-        url: "/captchas",
-        method: "POST",
-        data: {
-          tel: phoneNumber
-        }
-      }).then(res => {
-        // const code = res.data.code;
-        const { code } = res.data;
+      // const phoneNumber = this.form.username;
+      // if (!phoneNumber.trim()) {
+      //   this.$message.warning("请输入用户名和手机号码");
+      //   return;
+      // }
+      // this.$axios({
+      //   url: "/captchas",
+      //   method: "POST",
+      //   data: {
+      //     tel: phoneNumber
+      //   }
+      // }).then(res => {
+      //   // const code = res.data.code;
+      //   const { code } = res.data;
 
+      //   this.$alert(`手机验证码是：${code}`, '提示', {
+      //     confirmButtonText: '确定',
+      //     type: 'warning'
+      //   });
+      // })
+      this.$store.dispatch("user/sendCode", this.form.username).then(code => {
         this.$alert(`手机验证码是：${code}`, '提示', {
           confirmButtonText: '确定',
           type: 'warning'
-        });
+        })
       })
     },
     handleRegSubmit () {

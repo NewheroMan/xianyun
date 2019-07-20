@@ -15,22 +15,29 @@
     <el-form class="search-form-content"
              ref="form"
              label-width="80px">
+
       <el-form-item label="出发城市">
-        <!-- fetch-suggestions 返回输入建议的方法 -->
-        <!-- select 点击选中建议项时触发 -->
+
+        <!-- fetch-suggestions: 远程获取建议，输入框的值发生改变时候触发 -->
+        <!-- select: 选中下拉框的选项时候触发 -->
         <el-autocomplete :fetch-suggestions="queryDepartSearch"
                          placeholder="请搜索出发城市"
                          @select="handleDepartSelect"
                          class="el-autocomplete"
                          v-model="form.departCity"></el-autocomplete>
+
       </el-form-item>
+
       <el-form-item label="到达城市">
+
         <el-autocomplete :fetch-suggestions="queryDestSearch"
                          placeholder="请搜索到达城市"
                          @select="handleDestSelect"
                          class="el-autocomplete"
                          v-model="form.destCity"></el-autocomplete>
+
       </el-form-item>
+
       <el-form-item label="出发时间">
         <!-- change 用户确认选择日期时触发 -->
         <el-date-picker type="date"
@@ -40,6 +47,7 @@
                         v-model="form.departDate">
         </el-date-picker>
       </el-form-item>
+
       <el-form-item label="">
         <el-button style="width:100%;"
                    type="primary"
@@ -54,7 +62,6 @@
     </el-form>
   </div>
 </template>
-
 <script>
 import moment from "moment";
 export default {
@@ -67,7 +74,7 @@ export default {
         destCode: "",  // 到达城市代码
         departDate: "", // 日期字符串
       },
-      tab: [
+      tabs: [
         { icon: "iconfont icondancheng", name: "单程" },
         { icon: "iconfont iconshuangxiang", name: "往返" }
       ],
@@ -178,7 +185,7 @@ export default {
       })
       if (valid) {
         this.$router.push({
-          path: "/airs/flights",
+          path: "/air/flights",
           query: this.form
         })
       }

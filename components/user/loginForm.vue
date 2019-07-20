@@ -65,7 +65,7 @@ export default {
                 type: "success"
               });
               setTimeout(() => {
-                this.$router.replace("/")
+                this.$router.back();
               }, 1000);
             })
           // .catch(res => {
